@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VisionBrush · Drawing lab</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div><span class="eyebrow">EYE-GAZE DRAWING LAB</span><h1>VisionBrush<span> / prototype 01</span></h1></div><p id="status" role="status">Start with mouse practice or connect your camera.</p></header>
+<main>
+<section class="workspace"><div class="canvas-heading"><strong>Your canvas</strong><span id="mode">Look mode · no ink</span></div><canvas id="canvas" aria-label="Drawing canvas"></canvas><div class="canvas-footer">Look into the controls to stop a stroke. Tracking loss pauses ink.<span id="samples">0 samples recorded</span></div></section>
+<aside id="controls">
+<div class="group"><span class="eyebrow">INPUT</span><button id="camera">Connect camera</button><button id="calibrate" disabled>Calibrate & validate</button><button id="mouse" class="selected">Mouse practice</button></div>
+<div class="group"><span class="eyebrow">DRAW</span><button id="start" data-dwell>Start stroke</button><button id="stop" data-dwell>Stop stroke</button><button id="undo" data-dwell>Undo stroke</button></div>
+<div class="group"><span class="eyebrow">SMOOTHING</span><button id="raw" data-dwell>Raw</button><button id="ema" data-dwell class="selected">Standard filter</button><p>ML training runs separately in Python. Live ML is not connected yet.</p></div>
+<div class="group"><button id="record" data-dwell>Record session</button><button id="download" data-dwell>Download session</button><button id="save">Save drawing PNG</button><button id="clear">Clear drawing</button></div>
+<p id="validation">Camera calibration has not been measured. Mouse practice does not estimate gaze.</p>
+</aside>
+</main>
+<div id="cursor" hidden></div>
+<section id="overlay" hidden aria-label="Calibration">
+  <div class="calibration-instructions">
+    <p id="instructions">Look at the target</p>
+    <p id="calibration-feedback"></p>
+  </div>
+  <div id="target"></div>
+  <div id="calibration-cursor" hidden aria-hidden="true"></div>
+  <button id="cancel">Cancel calibration</button>
+</section>
+<script src="app.js"></script>
+</body></html>
